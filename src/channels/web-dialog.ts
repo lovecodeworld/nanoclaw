@@ -14,7 +14,7 @@ import { createServer, Server as HttpServer } from 'http';
 import { WebSocketServer, WebSocket } from 'ws';
 import { randomUUID } from 'crypto';
 
-import { Channel } from '../types.js';
+import { Channel, RegisteredGroup } from '../types.js';
 import { ChannelOpts, registerChannel } from './registry.js';
 import { logger } from '../logger.js';
 
@@ -38,6 +38,8 @@ class WebDialogChannel implements Channel {
     private port: number,
     private onMessage: ChannelOpts['onMessage'],
     private onChatMetadata: ChannelOpts['onChatMetadata'],
+    private registeredGroups: () => Record<string, RegisteredGroup>,
+    private registerGroup: (jid: string, group: RegisteredGroup) => void,
   ) {}
 
   async connect(): Promise<void> {
@@ -100,6 +102,20 @@ class WebDialogChannel implements Channel {
           if (message.type === 'chat') {
             const msgId = randomUUID();
             const timestamp = new Date().toISOString();
+
+            // Auto-register this session if not already registered
+            const groups = this.registeredGroups();
+            if (!groups[jid]) {
+              logger.info({ jid, userName }, 'Auto-registering web dialog session');
+              this.registerGroup(jid, {
+                name: userName,
+                folder: `web_${sessionId}`,
+                trigger: '@Andy',
+                added_at: timestamp,
+                requiresTrigger: false, // No trigger required for web sessions
+                isMain: false,
+              });
+            }
 
             // Store and deliver message to orchestrator
             this.onMessage(jid, {
@@ -501,7 +517,13 @@ function createWebDialogChannel(opts: ChannelOpts): Channel | null {
 
   logger.info({ port }, 'Initializing web dialog channel');
 
-  return new WebDialogChannel(port, opts.onMessage, opts.onChatMetadata);
+  return new WebDialogChannel(
+    port,
+    opts.onMessage,
+    opts.onChatMetadata,
+    opts.registeredGroups,
+    opts.registerGroup,
+  );
 }
 
 // Register channel

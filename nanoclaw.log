@@ -1,0 +1,144 @@
+
+> nanoclaw@1.2.12 start
+> node dist/index.js
+
+[04:01:10.570] [32mINFO[39m (18506): [36mDatabase initialized[39m
+[04:01:10.571] [32mINFO[39m (18506): [36mState loaded[39m
+    [35mgroupCount[39m: 0
+[04:01:10.577] [32mINFO[39m (18506): [36mCredential proxy started[39m
+    [35mport[39m: 3001
+    [35mhost[39m: "0.0.0.0"
+    [35mauthMode[39m: "oauth"
+[04:01:10.577] [32mINFO[39m (18506): [36mInitializing web dialog channel[39m
+    [35mport[39m: 3002
+[04:01:10.579] [32mINFO[39m (18506): [36mWeb dialog channel started[39m
+    [35mport[39m: 3002
+[04:01:10.579] [32mINFO[39m (18506): [36mScheduler loop started[39m
+[04:01:10.579] [32mINFO[39m (18506): [36mIPC watcher started (per-group namespaces)[39m
+[04:01:10.580] [32mINFO[39m (18506): [36mNanoClaw running (trigger: @Andy)[39m
+[04:01:17.634] [32mINFO[39m (18506): [36mWeb dialog session connected[39m
+    [35msessionId[39m: "2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mjid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+[04:01:18.639] [32mINFO[39m (18506): [36mAuto-registering web dialog session[39m
+    [35mjid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35muserName[39m: "WebUser-2f5e56b7"
+[04:01:18.641] [32mINFO[39m (WebUser-2f5e56b7/18506): [36mGroup registered[39m
+    [35mjid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mfolder[39m: "web_2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+[04:01:20.582] [32mINFO[39m (18506): [36mNew messages[39m
+    [35mcount[39m: 1
+[04:01:20.587] [32mINFO[39m (18506): [36mProcessing messages[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mmessageCount[39m: 1
+[04:01:20.590] [32mINFO[39m (18506): [36mSpawning container agent[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcontainerName[39m: "nanoclaw-web-2f5e56b7-800d-4e04-ba3b-a410abb7baf6-1773115280590"
+    [35mmountCount[39m: 5
+    [35misMain[39m: false
+[04:01:21.245] [31mERROR[39m (18506): [36mContainer exited with error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcode[39m: 125
+    [35mduration[39m: 656
+    [35mstderr[39m: "Unable to find image 'nanoclaw-agent:latest' locally\ndocker: Error response from daemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+    [35mstdout[39m: ""
+    [35mlogFile[39m: "/home/runner/work/nanoclaw/nanoclaw/groups/web_2f5e56b7-800d-4e04-ba3b-a410abb7baf6/logs/container-2026-03-10T04-01-21-244Z.log"
+[04:01:21.245] [31mERROR[39m (18506): [36mContainer agent error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    error: "Container exited with code 125: aemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+[04:01:21.247] [33mWARN[39m (18506): [36mAgent error, rolled back message cursor for retry[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+[04:01:21.247] [32mINFO[39m (18506): [36mScheduling retry with backoff[39m
+    [35mgroupJid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mretryCount[39m: 1
+    [35mdelayMs[39m: 5000
+[04:01:26.251] [32mINFO[39m (18506): [36mProcessing messages[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mmessageCount[39m: 1
+[04:01:26.252] [32mINFO[39m (18506): [36mSpawning container agent[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcontainerName[39m: "nanoclaw-web-2f5e56b7-800d-4e04-ba3b-a410abb7baf6-1773115286252"
+    [35mmountCount[39m: 5
+    [35misMain[39m: false
+[04:01:26.847] [31mERROR[39m (18506): [36mContainer exited with error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcode[39m: 125
+    [35mduration[39m: 595
+    [35mstderr[39m: "Unable to find image 'nanoclaw-agent:latest' locally\ndocker: Error response from daemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+    [35mstdout[39m: ""
+    [35mlogFile[39m: "/home/runner/work/nanoclaw/nanoclaw/groups/web_2f5e56b7-800d-4e04-ba3b-a410abb7baf6/logs/container-2026-03-10T04-01-26-847Z.log"
+[04:01:26.847] [31mERROR[39m (18506): [36mContainer agent error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    error: "Container exited with code 125: aemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+[04:01:26.850] [33mWARN[39m (18506): [36mAgent error, rolled back message cursor for retry[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+[04:01:26.850] [32mINFO[39m (18506): [36mScheduling retry with backoff[39m
+    [35mgroupJid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mretryCount[39m: 2
+    [35mdelayMs[39m: 10000
+[04:01:36.853] [32mINFO[39m (18506): [36mProcessing messages[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mmessageCount[39m: 1
+[04:01:36.854] [32mINFO[39m (18506): [36mSpawning container agent[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcontainerName[39m: "nanoclaw-web-2f5e56b7-800d-4e04-ba3b-a410abb7baf6-1773115296853"
+    [35mmountCount[39m: 5
+    [35misMain[39m: false
+[04:01:37.448] [31mERROR[39m (18506): [36mContainer exited with error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcode[39m: 125
+    [35mduration[39m: 595
+    [35mstderr[39m: "Unable to find image 'nanoclaw-agent:latest' locally\ndocker: Error response from daemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+    [35mstdout[39m: ""
+    [35mlogFile[39m: "/home/runner/work/nanoclaw/nanoclaw/groups/web_2f5e56b7-800d-4e04-ba3b-a410abb7baf6/logs/container-2026-03-10T04-01-37-448Z.log"
+[04:01:37.448] [31mERROR[39m (18506): [36mContainer agent error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    error: "Container exited with code 125: aemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+[04:01:37.450] [33mWARN[39m (18506): [36mAgent error, rolled back message cursor for retry[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+[04:01:37.450] [32mINFO[39m (18506): [36mScheduling retry with backoff[39m
+    [35mgroupJid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mretryCount[39m: 3
+    [35mdelayMs[39m: 20000
+[04:01:57.454] [32mINFO[39m (18506): [36mProcessing messages[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mmessageCount[39m: 1
+[04:01:57.455] [32mINFO[39m (18506): [36mSpawning container agent[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcontainerName[39m: "nanoclaw-web-2f5e56b7-800d-4e04-ba3b-a410abb7baf6-1773115317454"
+    [35mmountCount[39m: 5
+    [35misMain[39m: false
+[04:01:58.036] [31mERROR[39m (18506): [36mContainer exited with error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcode[39m: 125
+    [35mduration[39m: 582
+    [35mstderr[39m: "Unable to find image 'nanoclaw-agent:latest' locally\ndocker: Error response from daemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+    [35mstdout[39m: ""
+    [35mlogFile[39m: "/home/runner/work/nanoclaw/nanoclaw/groups/web_2f5e56b7-800d-4e04-ba3b-a410abb7baf6/logs/container-2026-03-10T04-01-58-036Z.log"
+[04:01:58.036] [31mERROR[39m (18506): [36mContainer agent error[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    error: "Container exited with code 125: aemon: pull access denied for nanoclaw-agent, repository does not exist or may require 'docker login': denied: requested access to the resource is denied\n\nRun 'docker run --help' for more information\n"
+[04:01:58.038] [33mWARN[39m (18506): [36mAgent error, rolled back message cursor for retry[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+[04:01:58.038] [32mINFO[39m (18506): [36mScheduling retry with backoff[39m
+    [35mgroupJid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mretryCount[39m: 4
+    [35mdelayMs[39m: 40000
+[04:02:17.639] [32mINFO[39m (18506): [36mWeb dialog session disconnected[39m
+    [35msessionId[39m: "2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+    [35mjid[39m: "web:2f5e56b7-800d-4e04-ba3b-a410abb7baf6"
+[04:02:38.041] [32mINFO[39m (18506): [36mProcessing messages[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mmessageCount[39m: 1
+[04:02:38.042] [32mINFO[39m (18506): [36mSpawning container agent[39m
+    [35mgroup[39m: "WebUser-2f5e56b7"
+    [35mcontainerName[39m: "nanoclaw-web-2f5e56b7-800d-4e04-ba3b-a410abb7baf6-1773115358042"
+    [35mmountCount[39m: 5
+    [35misMain[39m: false
+[04:02:38.493] [32mINFO[39m (18506): [36mShutdown signal received[39m
+    [35msignal[39m: "SIGTERM"
+[04:02:38.494] [32mINFO[39m (18506): [36mGroupQueue shutting down (containers detached, not killed)[39m
+    [35mactiveCount[39m: 1
+    [35mdetachedContainers[39m: [
+      "nanoclaw-web-2f5e56b7-800d-4e04-ba3b-a410abb7baf6-1773115358042"
+    ]
+[04:02:38.494] [32mINFO[39m (18506): [36mWeb dialog channel stopped[39m
