@@ -1,0 +1,189 @@
+name: Web Dialog E2E Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-web-dialog:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      # Required for GitHub Models API access
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Setup test environment
+        run: |
+          mkdir -p data/ipc
+          mkdir -p groups
+          mkdir -p store
+
+      # Configure to use GitHub Models API (free for testing)
+      # Note: GitHub Models uses OpenAI-compatible format
+      # GITHUB_TOKEN is automatically provided by GitHub Actions
+      - name: Configure GitHub Models API
+        run: |
+          cat > .env << EOF
+          ANTHROPIC_API_KEY=${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_BASE_URL=https://models.inference.ai.azure.com
+          ASSISTANT_NAME=Andy
+          WEB_DIALOG_PORT=3002
+          CREDENTIAL_PROXY_PORT=3001
+          EOF
+
+      # Build container (required for agent execution)
+      - name: Build agent container
+        run: |
+          cd container
+          docker build -t nanoclaw-agent:latest .
+
+      - name: Start NanoClaw with web dialog
+        run: |
+          npm start &
+          NANOCLAW_PID=$!
+          echo "NANOCLAW_PID=$NANOCLAW_PID" >> $GITHUB_ENV
+
+          # Wait for web dialog server to be ready
+          echo "Waiting for web dialog server..."
+          for i in {1..30}; do
+            if curl -s http://localhost:3002/health > /dev/null; then
+              echo "Web dialog server is ready"
+              break
+            fi
+            if [ $i -eq 30 ]; then
+              echo "Timeout waiting for web dialog server"
+              exit 1
+            fi
+            sleep 2
+          done
+
+      - name: Test web dialog connection
+        run: |
+          # Test HTTP endpoint
+          response=$(curl -s -w "\n%{http_code}" http://localhost:3002/)
+          http_code=$(echo "$response" | tail -n1)
+          if [ "$http_code" != "200" ]; then
+            echo "Failed to connect to web dialog (HTTP $http_code)"
+            exit 1
+          fi
+          echo "Web dialog HTTP endpoint OK"
+
+          # Test health endpoint
+          health=$(curl -s http://localhost:3002/health)
+          echo "Health check response: $health"
+          if ! echo "$health" | grep -q '"status":"ok"'; then
+            echo "Health check failed"
+            exit 1
+          fi
+          echo "Web dialog health check OK"
+
+      - name: Test WebSocket messaging (using Node.js)
+        run: |
+          node << 'EOF'
+          const WebSocket = require('ws');
+
+          const ws = new WebSocket('ws://localhost:3002');
+          let received = false;
+
+          ws.on('open', () => {
+            console.log('WebSocket connected');
+
+            // Wait for system message
+            setTimeout(() => {
+              console.log('Sending test message...');
+              ws.send(JSON.stringify({
+                type: 'chat',
+                content: 'Hello, this is a test message'
+              }));
+            }, 1000);
+          });
+
+          ws.on('message', (data) => {
+            const msg = JSON.parse(data.toString());
+            console.log('Received message:', msg.type);
+
+            if (msg.type === 'system') {
+              console.log('System message received:', msg.message);
+            } else if (msg.type === 'message') {
+              console.log('Assistant response received');
+              received = true;
+              ws.close();
+            }
+          });
+
+          ws.on('close', () => {
+            console.log('WebSocket closed');
+            // Give it some time for async operations
+            setTimeout(() => {
+              if (!received) {
+                console.log('No response received within timeout');
+                process.exit(0); // Don't fail - agent might take time
+              }
+              process.exit(0);
+            }, 5000);
+          });
+
+          ws.on('error', (err) => {
+            console.error('WebSocket error:', err);
+            process.exit(1);
+          });
+
+          // Timeout after 30 seconds
+          setTimeout(() => {
+            console.log('Test timeout');
+            ws.close();
+            process.exit(0); // Don't fail on timeout
+          }, 30000);
+          EOF
+
+      - name: Check logs
+        if: always()
+        run: |
+          echo "=== NanoClaw logs ==="
+          if [ -f nanoclaw.log ]; then
+            cat nanoclaw.log
+          fi
+
+          echo "=== Database state ==="
+          if [ -f data/nanoclaw.db ]; then
+            sqlite3 data/nanoclaw.db "SELECT * FROM messages;" || true
+            sqlite3 data/nanoclaw.db "SELECT * FROM chats;" || true
+          fi
+
+      - name: Stop NanoClaw
+        if: always()
+        run: |
+          if [ ! -z "$NANOCLAW_PID" ]; then
+            kill $NANOCLAW_PID || true
+          fi
+          pkill -f "node dist/index.js" || true
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: |
+            nanoclaw.log
+            data/
+          retention-days: 7

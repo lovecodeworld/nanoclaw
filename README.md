@@ -65,7 +65,8 @@ Then run `/setup`. Claude Code handles everything: dependencies, authentication,
 
 ## What It Supports
 
-- **Multi-channel messaging** - Talk to your assistant from WhatsApp, Telegram, Discord, Slack, or Gmail. Add channels with skills like `/add-whatsapp` or `/add-telegram`. Run one or many at the same time.
+- **Multi-channel messaging** - Talk to your assistant from WhatsApp, Telegram, Discord, Slack, Gmail, or web browser. Add channels with skills like `/add-whatsapp` or `/add-telegram`. Run one or many at the same time.
+- **Web Dialog** - Built-in web-based chat interface that works out-of-the-box without any configuration. Perfect for testing and development. Just start NanoClaw and open `http://localhost:3002` in your browser.
 - **Isolated group context** - Each group has its own `CLAUDE.md` memory, isolated filesystem, and runs in its own container sandbox with only that filesystem mounted to it.
 - **Main channel** - Your private channel (self-chat) for admin control; every group is completely isolated
 - **Scheduled tasks** - Recurring jobs that run Claude and can message you back
