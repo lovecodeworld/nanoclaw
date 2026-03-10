@@ -79,12 +79,14 @@ class WebDialogChannel implements Channel {
       logger.info({ sessionId, jid }, 'Web dialog session connected');
 
       // Send welcome message
-      ws.send(JSON.stringify({
-        type: 'system',
-        message: `Connected as ${userName}. Session ID: ${sessionId}`,
-        sessionId,
-        jid,
-      }));
+      ws.send(
+        JSON.stringify({
+          type: 'system',
+          message: `Connected as ${userName}. Session ID: ${sessionId}`,
+          sessionId,
+          jid,
+        }),
+      );
 
       // Register chat metadata
       this.onChatMetadata(
@@ -106,7 +108,10 @@ class WebDialogChannel implements Channel {
             // Auto-register this session if not already registered
             const groups = this.registeredGroups();
             if (!groups[jid]) {
-              logger.info({ jid, userName }, 'Auto-registering web dialog session');
+              logger.info(
+                { jid, userName },
+                'Auto-registering web dialog session',
+              );
               this.registerGroup(jid, {
                 name: userName,
                 folder: `web_${sessionId}`,
@@ -129,7 +134,10 @@ class WebDialogChannel implements Channel {
               is_bot_message: false,
             });
 
-            logger.debug({ sessionId, content: message.content }, 'Web dialog message received');
+            logger.debug(
+              { sessionId, content: message.content },
+              'Web dialog message received',
+            );
           }
         } catch (err) {
           logger.error({ err }, 'Failed to parse web dialog message');
@@ -176,13 +184,18 @@ class WebDialogChannel implements Channel {
       return;
     }
 
-    session.ws.send(JSON.stringify({
-      type: 'message',
-      content: text,
-      timestamp: new Date().toISOString(),
-    }));
+    session.ws.send(
+      JSON.stringify({
+        type: 'message',
+        content: text,
+        timestamp: new Date().toISOString(),
+      }),
+    );
 
-    logger.debug({ jid, content: text.substring(0, 100) }, 'Web dialog message sent');
+    logger.debug(
+      { jid, content: text.substring(0, 100) },
+      'Web dialog message sent',
+    );
   }
 
   isConnected(): boolean {
