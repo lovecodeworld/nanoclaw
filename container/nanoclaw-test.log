@@ -1,0 +1,230 @@
+
+> nanoclaw@1.2.12 start
+> node dist/index.js
+
+[04:16:00.954] [32mINFO[39m (16640): [36mDatabase initialized[39m
+[04:16:00.955] [32mINFO[39m (16640): [36mState loaded[39m
+    [35mgroupCount[39m: 0
+[04:16:00.961] [32mINFO[39m (16640): [36mCredential proxy started[39m
+    [35mport[39m: 3001
+    [35mhost[39m: "0.0.0.0"
+    [35mauthMode[39m: "oauth"
+[04:16:00.961] [32mINFO[39m (16640): [36mInitializing web dialog channel[39m
+    [35mport[39m: 3002
+[04:16:00.963] [32mINFO[39m (16640): [36mWeb dialog channel started[39m
+    [35mport[39m: 3002
+[04:16:00.963] [32mINFO[39m (16640): [36mScheduler loop started[39m
+[04:16:00.964] [32mINFO[39m (16640): [36mIPC watcher started (per-group namespaces)[39m
+[04:16:00.964] [32mINFO[39m (16640): [36mNanoClaw running (trigger: @Andy)[39m
+[04:16:30.445] [32mINFO[39m (16640): [36mWeb dialog session connected[39m
+    [35msessionId[39m: "98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+    [35mjid[39m: "web:98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+[04:16:31.450] [32mINFO[39m (16640): [36mAuto-registering web dialog session[39m
+    [35mjid[39m: "web:98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+    [35muserName[39m: "WebUser-98da8bb6"
+[04:16:31.454] [32mINFO[39m (WebUser-98da8bb6/16640): [36mGroup registered[39m
+    [35mjid[39m: "web:98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+    [35mfolder[39m: "web_98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+[04:16:32.983] [32mINFO[39m (16640): [36mNew messages[39m
+    [35mcount[39m: 1
+[04:16:32.989] [32mINFO[39m (16640): [36mProcessing messages[39m
+    [35mgroup[39m: "WebUser-98da8bb6"
+    [35mmessageCount[39m: 1
+[04:16:32.992] [32mINFO[39m (16640): [36mSpawning container agent[39m
+    [35mgroup[39m: "WebUser-98da8bb6"
+    [35mcontainerName[39m: "nanoclaw-web-98da8bb6-c213-42bd-b1a8-7a1d9721559a-1773116192992"
+    [35mmountCount[39m: 5
+    [35misMain[39m: false
+[04:16:36.612] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages/count_tokens?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:37.099] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages/count_tokens?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:37.108] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:37.593] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:37.620] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:38.251] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:39.344] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:41.664] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:45.981] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:16:54.446] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:17:10.569] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:17:50.505] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:18:28.553] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:18:30.452] [32mINFO[39m (16640): [36mWeb dialog session disconnected[39m
+    [35msessionId[39m: "98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+    [35mjid[39m: "web:98da8bb6-c213-42bd-b1a8-7a1d9721559a"
+[04:19:07.331] [31mERROR[39m (16640): [36mCredential proxy upstream error[39m
+    [35murl[39m: "/v1/messages?beta=true"
+    err: {
+      "type": "Error",
+      "message": "getaddrinfo ENOTFOUND api.anthropic.com",
+      "stack":
+          Error: getaddrinfo ENOTFOUND api.anthropic.com
+              at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      "errno": -3007,
+      "code": "ENOTFOUND",
+      "syscall": "getaddrinfo",
+      "hostname": "api.anthropic.com"
+    }
+[04:19:42.780] [32mINFO[39m (16640): [36mShutdown signal received[39m
+    [35msignal[39m: "SIGTERM"
+[04:19:42.780] [32mINFO[39m (16640): [36mGroupQueue shutting down (containers detached, not killed)[39m
+    [35mactiveCount[39m: 1
+    [35mdetachedContainers[39m: [
+      "nanoclaw-web-98da8bb6-c213-42bd-b1a8-7a1d9721559a-1773116192992"
+    ]
+[04:19:42.781] [32mINFO[39m (16640): [36mWeb dialog channel stopped[39m
